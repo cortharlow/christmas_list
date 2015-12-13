@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Christmas List</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <nav>
+    <% if current_user %>
+    <ul class="menu">
+      <li>Signed in as <%= current_user.name %></li>
+      <li><%= link_to "Christmas List", user_lists_path(current_user) %></li>
+      <li><%= link_to "Add an Item", new_user_list_path(current_user) %></li>
+      <li><%= link_to "Edit Account", edit_user_path(current_user) %></li>
+      <li><%= link_to "Logout", logout_path %></li>
+    </ul>
+    <% else %>
+      <div>
+        <h3>Please Login</h3>
+      </div>
+    <% end %>
+  </nav>
+
+  <%= yield %>
+
+</body>
+</html>

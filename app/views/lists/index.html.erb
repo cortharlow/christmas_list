@@ -1,0 +1,26 @@
+<a class="#top"></a>
+<div>
+  <% if @user == current_user %>
+  <h1>Your Christmas List</h1>
+  <% else %>
+  <h1><%= @user.username.titleize %>'s Christmas List</h1>
+  <% end %>
+
+  <ul>
+    <% @list.each do |list| %>
+    <a href="<%= list.url %>">
+    <li>
+      <h2><%= list.name %></h2>
+        <p><%= list.description %></p>
+        <p>Price: <%= list.price %></p>
+      <% if list.user_id == current_user.id %>
+        <p><%= link_to "edit", edit_user_list_path(current_user, list) %> <%= link_to "delete", user_list_path(current_user, list), method: :delete, data: {confirm: "Are you sure?"}%></p>
+      <% end %>
+    </li>
+    </a>
+    <% end %>
+  </ul>
+
+</div>
+
+<a href="#top">Back to the Top</a>

@@ -1,0 +1,30 @@
+<%= form_for [current_user, @list] do |f| %>
+
+  <% if @list.errors.any? %>
+    <div id="error_message">
+      <ul>
+        <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <p>
+      Name: <br><%= f.text_field :name %>
+    </p>
+    <p>
+      Description: <br><%= f.text_area :description %>
+    </p>
+    <p>
+      Price: <br>$<%= f.text_field :price %>
+    </p>
+    <p>
+      Copy and Paste Item's URL: <br><%= f.text_field :url %>
+    </p>
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
+  </div>
+<% end %>
