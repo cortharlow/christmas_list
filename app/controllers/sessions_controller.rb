@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_lists_path
+      redirect_to user_lists_path(current_user)
     else
       render 'lists/index'
       # redirect_to users_path

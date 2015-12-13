@@ -6,16 +6,18 @@
   <h1><%= @user.username.titleize %>'s Christmas List</h1>
   <% end %>
 
-  <ul>
+  <ul class="list">
     <% @list.each do |list| %>
-    <a href="<%= list.url %>">
-    <li>
+    <a target="_blank" href="<%= list.url %>">
+    <li class="ui-state-default">
+      <div>
       <h2><%= list.name %></h2>
         <p><%= list.description %></p>
         <p>Price: <%= list.price %></p>
       <% if list.user_id == current_user.id %>
         <p><%= link_to "edit", edit_user_list_path(current_user, list) %> <%= link_to "delete", user_list_path(current_user, list), method: :delete, data: {confirm: "Are you sure?"}%></p>
       <% end %>
+      </div>
     </li>
     </a>
     <% end %>
