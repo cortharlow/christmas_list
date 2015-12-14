@@ -5,33 +5,30 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script>
-  $(function() {
-    $( ".list" ).sortable({
-      connectWith: ".connectedSortable"
-    }).disableSelection();
-  });
-  </script>
+  <%= stylesheet_link_tag "style.css" %>
 </head>
 <body>
-
-  <nav>
-    <% if current_user %>
-    <ul class="menu">
-      <li>Signed in as <%= current_user.name %></li>
-      <li><%= link_to "Christmas List", user_lists_path(current_user) %></li>
-      <li><%= link_to "Add an Item", new_user_list_path(current_user) %></li>
-      <li><%= link_to "Edit Account", edit_user_path(current_user) %></li>
-      <li><%= link_to "Logout", logout_path %></li>
-    </ul>
-    <% else %>
-      <div>
-        <h3>Please Login</h3>
-      </div>
-    <% end %>
-  </nav>
-
-  <%= yield %>
-
+  <div id="snow">
+    <nav id="nav-bar">
+      <% if current_user %>
+      <ul id="nav-list">
+        <li class="nav-btn"><%= link_to "Christmas List", user_lists_path(current_user) %></li>
+        <li class="nav-btn"><%= link_to "Add Item", new_user_list_path(current_user) %></li>
+        <li class="nav-btn"><%= link_to "Edit Account", edit_user_path(current_user) %></li>
+        <li class="nav-btn"><%= link_to "Logout", logout_path %></li>
+      </ul>
+      <% end %>
+    </nav>
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
 </body>
+<script>
+$(function() {
+  $( ".list" ).sortable({
+    connectWith: ".connectedSortable"
+  }).disableSelection();
+});
+</script>
 </html>

@@ -1,28 +1,31 @@
-<a class="#top"></a>
-<div>
-  <% if @user == current_user %>
-  <h1>Your Christmas List</h1>
-  <% else %>
-  <h1><%= @user.username.titleize %>'s Christmas List</h1>
-  <% end %>
 
+<div class="title">
+  <% if @user == current_user %>
+    <h1>Your Christmas List</h1>
+  <% end %>
+</div>
+  <% if @list.length != 0 %>
+    <p class="drag-and-drop">Click and drag to rearrange.</p>
+  <% end %>
+<div class="list-container">
+  <% if @list.length == 0 %>
+    <div class="list-none">You have no items! Click Add Item above to get started.</div>
+  <% else %>
+  <a class="#top"></a>
   <ul class="list">
     <% @list.each do |list| %>
     <a target="_blank" href="<%= list.url %>">
-    <li class="ui-state-default">
-      <div>
-      <h2><%= list.name %></h2>
-        <p><%= list.description %></p>
-        <p>Price: <%= list.price %></p>
+    <li class="list-item">
+      <p class="list-name"><%= list.name %></p>
+      <p class="list-price"><strong>Cost:</strong> $<%= list.price %></p>
+        <p id="list-description"><%= list.description %></p>
       <% if list.user_id == current_user.id %>
-        <p><%= link_to "edit", edit_user_list_path(current_user, list) %> <%= link_to "delete", user_list_path(current_user, list), method: :delete, data: {confirm: "Are you sure?"}%></p>
+        <p id="list-options"><%= link_to "Edit", edit_user_list_path(current_user, list) %> | <%= link_to "Delete", user_list_path(current_user, list), method: :delete, data: {confirm: "Are you sure?"}%></p>
       <% end %>
-      </div>
     </li>
     </a>
     <% end %>
   </ul>
-
+  <a class="drag-and-drop" href="#top">Back to the Top</a>
+  <% end %>
 </div>
-
-<a href="#top">Back to the Top</a>

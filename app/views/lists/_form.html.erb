@@ -10,21 +10,11 @@
     </div>
   <% end %>
 
-  <div>
-    <p>
-      Name: <br><%= f.text_field :name %>
-    </p>
-    <p>
-      Description: <br><%= f.text_area :description %>
-    </p>
-    <p>
-      Price: <br>$<%= f.text_field :price %>
-    </p>
-    <p>
-      Copy and Paste Item's URL: <br><%= f.text_field :url %>
-    </p>
-    <p>
-      <%= f.submit "Submit" %>
-    </p>
+  <div class="item-form">
+    <%= f.text_field :name, :class => "form-field", :placeholder => "Name", :style => "color:black;" %><br>
+    <%= f.text_field :description, :class => "form-field", "placeholder" => "Description", :style => "color:black" %><br>
+    <%= f.text_field :price, :class => "form-field", "placeholder" => "Price", :style => "color:black" %><br>
+    <%= f.text_field :url, :class => "form-field", "placeholder" => "Copy and Paste Item's URL", :style => "color:black" %><br>
+    <%= f.submit "Submit", :class => "nav-btn", :id => "submit-btn" %>
   </div>
 <% end %>
