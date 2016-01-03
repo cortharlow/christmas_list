@@ -21,7 +21,7 @@ The digital version of a childhood tradition.
     - Authentication required to access moments
   - Item
   
-* **Deployed to Heroku as [my-christmas-list.herokuapp.com](http://my-christmas-list.herokuapp.com/)
+* **Deployed to Heroku as [my-christmas-list.herokuapp.com](http://my-christmas-list.herokuapp.com/)**
 
 ---
 
