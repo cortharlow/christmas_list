@@ -1,8 +1,10 @@
 # My Christmas List
 
 The digital version of a childhood tradition.
+
 ![List](http://i.imgur.com/YpF9DnZ.png)
 [Demo](http://my-christmas-list.herokuapp.com/)
+
 ---
 
 ### Tech Specs
